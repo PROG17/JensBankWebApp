@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JensBankWebApp", "JensBankWebApp\JensBankWebApp.csproj", "{8FC65720-6C6A-4C57-9256-F39BC78BD81A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JensBankWebApp.Test", "JensBankWebApp.Test\JensBankWebApp.Test.csproj", "{83388555-3D77-44A0-A116-CA1A1F577EBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8FC65720-6C6A-4C57-9256-F39BC78BD81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FC65720-6C6A-4C57-9256-F39BC78BD81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FC65720-6C6A-4C57-9256-F39BC78BD81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83388555-3D77-44A0-A116-CA1A1F577EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83388555-3D77-44A0-A116-CA1A1F577EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83388555-3D77-44A0-A116-CA1A1F577EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83388555-3D77-44A0-A116-CA1A1F577EBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
