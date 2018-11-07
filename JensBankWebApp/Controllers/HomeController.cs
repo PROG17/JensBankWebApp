@@ -10,9 +10,16 @@ namespace JensBankWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private IBankRepository _bankrepo;
+
+        public HomeController(IBankRepository bankRepo)
+        {
+            _bankrepo = bankRepo;    
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(_bankrepo.GetAllCustomers());
         }
 
         public IActionResult About()
