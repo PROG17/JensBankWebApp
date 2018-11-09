@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace JensBankWebApp.Models
 {
-    public class BankRepository:IBankRepository
+    public class BankRepository : IBankRepository
     {
         private List<Customer> _customers;
 
@@ -66,17 +66,17 @@ namespace JensBankWebApp.Models
             {
                 new Account
                 {
-                    Id=1,
+                    Id= int.Parse(id.ToString() + "1234"),
                     Amount = 200 *id
                 },
                 new Account
                 {
-                    Id=2,
+                    Id=int.Parse(id.ToString() + "2345"),
                     Amount = 300 *id
                 },
                 new Account
                 {
-                    Id=3,
+                    Id=int.Parse(id.ToString() + "3456"),
                     Amount = 400 *id
                 }
             };
