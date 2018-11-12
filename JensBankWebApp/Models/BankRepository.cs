@@ -29,7 +29,7 @@ namespace JensBankWebApp.Models
 
         public Customer GetCustomerById(int id)
         {
-            return _customers.SingleOrDefault(c => c.Id == id);
+            return _customers.FirstOrDefault(c => c.Id == id);
         }
 
         public DepositWithdrawViewModel Deposit(DepositWithdrawViewModel model)
@@ -65,7 +65,7 @@ namespace JensBankWebApp.Models
 
             if (account != null)
             {
-                if (model.Amount < account.Amount && model.Amount > 0)
+                if (model.Amount <= account.Amount && model.Amount > 0)
                 {
                     account.Amount -= model.Amount;
                     model.Account = account;
