@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using JensBankWebApp.ViewModels;
 
 namespace JensBankWebApp.Models
 {
     public class BankRepository : IBankRepository
     {
         private List<Customer> _customers;
+        private List<Account> _accounts;
 
         public BankRepository()
         {
             PopulateCustomersAndAccounts();
+            PopulateAccountList();
         }
 
         public List<Customer> GetAllCustomers()
@@ -19,9 +22,76 @@ namespace JensBankWebApp.Models
             return _customers;
         }
 
+        public Account GetAccountById(int id)
+        {
+            return _accounts.FirstOrDefault(a => a.Id == id);
+        }
+
         public Customer GetCustomerById(int id)
         {
-            return _customers.SingleOrDefault(c => c.Id == id);
+            return _customers.FirstOrDefault(c => c.Id == id);
+        }
+
+        public DepositWithdrawViewModel Deposit(DepositWithdrawViewModel model)
+        {
+            model.Message = null;
+            model.Account = null;
+
+            var account = _accounts.FirstOrDefault(c => c.Id == model.AccountNo);
+
+            if (account != null)
+            {
+                if (model.Amount > 0)
+                {
+                    account.Amount += model.Amount;
+                    model.Account = account;
+                    model.Message = "Deposit completed";
+                }
+                else
+                    model.Message = "Amount has to be digits with a value above 0";
+            }
+            else
+                model.Message = "Invalid account number";
+
+            return model;
+        }
+
+        public DepositWithdrawViewModel Withdraw(DepositWithdrawViewModel model)
+        {
+            model.Message = null;
+            model.Account = null;
+
+            var account = _accounts.FirstOrDefault(c => c.Id == model.AccountNo);
+
+            if (account != null)
+            {
+                if (model.Amount <= account.Amount && model.Amount > 0)
+                {
+                    account.Amount -= model.Amount;
+                    model.Account = account;
+                    model.Message = "Withdraw completed";
+                }
+                else if (model.Amount < 1)
+                    model.Message = "Amount has to be digits with a value above 0";
+                else
+                    model.Message = "Not enough money on account";
+            }
+            else
+                model.Message = "Invalid account number";
+
+            return model;
+        }
+
+        private void PopulateAccountList()
+        {
+            var list = new List<Account>();
+
+            foreach (var cust in _customers)
+            {
+                list.AddRange(cust.Accounts);
+            }
+
+            _accounts = list;
         }
 
         private void PopulateCustomersAndAccounts()
