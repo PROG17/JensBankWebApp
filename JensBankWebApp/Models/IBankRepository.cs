@@ -13,5 +13,9 @@ namespace JensBankWebApp.Models
         Account GetAccountById(int id);
         DepositWithdrawViewModel Deposit(DepositWithdrawViewModel model);
         DepositWithdrawViewModel Withdraw(DepositWithdrawViewModel model);
+
+        bool MoneyTransfer(Account origin, Account destination, decimal amount, out string message);
+
+        //EgidioModel MoneyTransfer2(DepositWithdrawViewModel origin, DepositWithdrawViewModel destination);
     }
 }

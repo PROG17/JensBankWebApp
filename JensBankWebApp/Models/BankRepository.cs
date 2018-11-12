@@ -82,6 +82,47 @@ namespace JensBankWebApp.Models
             return model;
         }
 
+
+        public bool MoneyTransfer(Account origin, Account destination, decimal amount, out string message)
+        {
+            if (origin == null || destination == null)
+            {
+                message = "Error: Invalid origin and/or destination account";
+
+                return false;
+            }
+
+            if (amount <= 0)
+            {
+                message = "Error: Invalid amount. It must be larger than 0";
+
+                return false;
+            }
+
+            if (amount > origin.Amount)
+            {
+                message = "Error: Amount is larger than origin´s account balance";
+
+                return false;
+            }
+
+            origin.Amount -= amount;
+
+            destination.Amount += amount;
+
+            message = $"Success: Transferred {amount} kr from account nr. {origin.Id} to account nr. {destination.Id}";
+
+            return true;
+        }
+
+
+
+
+
+
+
+
+
         private void PopulateAccountList()
         {
             var list = new List<Account>();
