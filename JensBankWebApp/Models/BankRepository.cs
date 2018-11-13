@@ -92,6 +92,13 @@ namespace JensBankWebApp.Models
                 return false;
             }
 
+            if (origin.Id == destination.Id)
+            {
+                message = "Error: Money transfer is possible only between different account numbers";
+
+                return false;
+            }
+
             if (amount <= 0)
             {
                 message = "Error: Invalid amount. It must be larger than 0";

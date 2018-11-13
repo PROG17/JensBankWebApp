@@ -115,6 +115,24 @@ namespace JensBankWebApp.Test
             Assert.True(status);
         }
 
+        [Fact]
+        public void Cannot_transfer_money_when_origin_and_destination_are_the_same()
+        {
+            // ARRANGE
+            var originAccount = _bankRepo.GetAccountById(11234);
+            var destinationAccount = _bankRepo.GetAccountById(11234);
+
+            // ACT
+            var amount = 10.0m;
+
+            string msg = null;
+            bool status = _bankRepo.MoneyTransfer(originAccount, destinationAccount, amount, out msg);
+
+            // ASSERT
+
+            Assert.False(status);
+            Assert.Equal("Error: Money transfer is possible only between different account numbers", msg);
+        }
 
         [Fact]
         public void Cannot_transfer_money_when_origin_balance_has_NOT_coverage()
