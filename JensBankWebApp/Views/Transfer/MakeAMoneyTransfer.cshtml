@@ -64,7 +64,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">New balance:</label>
                     <div class="col-sm-10">
-                        <p class="form-control-static">@Model.OriginNewAmount SEK</p>
+                        <p class="form-control-static">@Model.OriginNewAmount.ToString("N2") SEK</p>
                     </div>
                 </div>
             </form>
@@ -81,16 +81,13 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2">New balance:</label>
                     <div class="col-sm-10">
-                        <p class="form-control-static">@Model.DestinationNewAmount SEK</p>
+                        <p class="form-control-static">@Model.DestinationNewAmount.ToString("N2") SEK</p>
                     </div>
                 </div>
             </form>
         </div>
     }
 </div>
-
-
-
 
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Customer List</a>

@@ -56,7 +56,7 @@ namespace JensBankWebApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                model.Message = "Error: Model is not valid";
+                model.Message = "Error: Operation cannot be processed due to errors in input fields";
 
                 model.IsError = true;
 
