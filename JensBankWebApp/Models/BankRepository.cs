@@ -115,14 +115,6 @@ namespace JensBankWebApp.Models
             return true;
         }
 
-
-
-
-
-
-
-
-
         private void PopulateAccountList()
         {
             var list = new List<Account>();
